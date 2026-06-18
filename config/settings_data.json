@@ -1,9 +1,25 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "current": {
     "color_green": "#146A53",
     "color_green_dark": "#0E4F3E",
     "color_green_tint": "#E7F0EB",
     "color_bg": "#F6F2EA",
-    "color_ink": "#19213B"
+    "color_ink": "#19213B",
+    "blocks": {
+      "7924418359578431505": {
+        "type": "shopify://apps/seoant-ai-seo/blocks/seoant-core/8e57283b-dcb0-4f7b-a947-fb5c57a0d59d",
+        "disabled": false,
+        "settings": {}
+      }
+    }
   }
 }
