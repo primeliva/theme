@@ -1,0 +1,11 @@
+{
+  "sections": {
+    "hero": { "type": "hero" },
+    "trust": { "type": "trust-bar" },
+    "featured": { "type": "featured-collection" },
+    "featured_product": { "type": "featured-product" },
+    "categories": { "type": "categories" },
+    "testimonials": { "type": "testimonials" }
+  },
+  "order": ["hero", "trust", "featured", "featured_product", "categories", "testimonials"]
+}
