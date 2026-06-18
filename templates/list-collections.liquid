@@ -1,0 +1,11 @@
+<div class="sec">
+  <h1 class="serif" style="font-weight:600;font-size:42px;letter-spacing:-.02em;margin:0 0 28px;">Collections</h1>
+  <div class="grid-4">
+    {%- for collection in collections -%}
+      <a href="{{ collection.url }}" class="cat-tile">
+        {%- if collection.featured_image -%}<img src="{{ collection.featured_image | image_url: width: 800 }}" alt="">{%- else -%}{{ 'collection-1' | placeholder_svg_tag: 'placeholder' }}{%- endif -%}
+        <span class="cat-tile__label">{{ collection.title }}</span>
+      </a>
+    {%- endfor -%}
+  </div>
+</div>

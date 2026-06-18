@@ -1,0 +1,9 @@
+<div class="sec" style="max-width:480px;">
+  <h1 class="serif" style="font-weight:600;font-size:38px;letter-spacing:-.02em;margin:0 0 20px;">Set a new password</h1>
+  {% form 'reset_customer_password' %}
+    {{ form.errors | default_errors }}
+    <input class="field" type="password" name="customer[password]" placeholder="New password" required>
+    <input class="field" type="password" name="customer[password_confirmation]" placeholder="Confirm password" required>
+    <button type="submit" class="btn btn-green btn-block">Save password</button>
+  {% endform %}
+</div>

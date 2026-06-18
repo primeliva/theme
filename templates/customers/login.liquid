@@ -1,0 +1,10 @@
+<div class="sec" style="max-width:480px;">
+  <h1 class="serif" style="font-weight:600;font-size:38px;letter-spacing:-.02em;margin:0 0 20px;">Login</h1>
+  {% form 'customer_login' %}
+    {{ form.errors | default_errors }}
+    <input class="field" type="email" name="customer[email]" placeholder="Email" required>
+    <input class="field" type="password" name="customer[password]" placeholder="Password">
+    <button type="submit" class="btn btn-green btn-block">Sign in</button>
+  {% endform %}
+  <p style="margin-top:16px;font-size:14px;color:#5A6072;">New here? <a href="{{ routes.account_register_url }}" style="color:var(--green);font-weight:600;">Create an account</a></p>
+</div>

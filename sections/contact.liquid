@@ -1,0 +1,43 @@
+<div class="sec" style="text-align:center;padding-bottom:24px;">
+  <span class="eyebrow">{{ section.settings.eyebrow | default: "We're here to help" }}</span>
+  <h1 class="serif" style="font-weight:600;font-size:50px;letter-spacing:-.02em;margin:12px 0 8px;">{{ page.title | default: 'Get in touch' }}</h1>
+  <p style="font-size:17px;color:#5A6072;margin:0 auto;max-width:520px;">{{ section.settings.intro | default: 'Questions about an order, a product, or a return? Our team replies within a few hours, Monday to Saturday.' }}</p>
+</div>
+<div class="contact">
+  <div class="contact__form">
+    <h2>Send us a message</h2>
+    {% form 'contact' %}
+      {%- if form.posted_successfully? -%}<p style="color:var(--green);font-weight:600;">Thanks — we'll be in touch shortly.</p>{%- endif -%}
+      <input class="field" type="text" name="contact[name]" placeholder="Your name">
+      <input class="field" type="email" name="contact[email]" placeholder="Email address" required>
+      <input class="field" type="text" name="contact[order]" placeholder="Order number (optional)">
+      <textarea class="field" name="contact[body]" rows="5" placeholder="How can we help?"></textarea>
+      <button type="submit" class="btn btn-green btn-block">Send message</button>
+    {% endform %}
+  </div>
+  <div class="contact__side">
+    <div class="contact__card">
+      <h3>Contact details</h3>
+      <div class="contact__item"><div><div class="k">Email</div><div class="val">{{ section.settings.email | default: 'support@primeliva.com' }}</div></div></div>
+      <div class="contact__item"><div><div class="k">Phone / WhatsApp</div><div class="val">{{ section.settings.phone | default: '+91 98XXX XXXXX' }}</div></div></div>
+      <div class="contact__item"><div><div class="k">Support hours</div><div class="val">{{ section.settings.hours | default: 'Mon–Sat · 10am – 7pm IST' }}</div></div></div>
+    </div>
+    <div style="background:#fff;border:1px solid #ECE6DA;border-radius:22px;padding:24px;">
+      <div style="font-weight:700;font-size:15px;margin-bottom:6px;">Need a quick answer?</div>
+      <p style="font-size:14px;color:#5A6072;margin:0 0 14px;line-height:1.55;">Most order and shipping questions are answered on our product pages.</p>
+      <a href="{{ routes.all_products_collection_url }}" style="font-weight:700;font-size:14px;color:var(--green);">Browse products →</a>
+    </div>
+  </div>
+</div>
+{% schema %}
+{
+  "name": "Contact",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "We're here to help" },
+    { "type": "textarea", "id": "intro", "label": "Intro" },
+    { "type": "text", "id": "email", "label": "Email", "default": "support@primeliva.com" },
+    { "type": "text", "id": "phone", "label": "Phone / WhatsApp", "default": "+91 98XXX XXXXX" },
+    { "type": "text", "id": "hours", "label": "Support hours", "default": "Mon–Sat · 10am – 7pm IST" }
+  ]
+}
+{% endschema %}

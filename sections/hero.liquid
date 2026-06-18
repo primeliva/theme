@@ -1,0 +1,36 @@
+<div class="hero">
+  <div class="hero__card">
+    {%- if section.settings.image -%}
+      <div class="hero__bg"><img src="{{ section.settings.image | image_url: width: 2000 }}" alt="" width="2000" height="1100"></div>
+    {%- endif -%}
+    <div class="hero__scrim"></div>
+    <div class="hero__content">
+      {%- if section.settings.eyebrow != blank -%}<span class="eyebrow">{{ section.settings.eyebrow }}</span>{%- endif -%}
+      <h1>{{ section.settings.heading }}</h1>
+      {%- if section.settings.text != blank -%}<p>{{ section.settings.text }}</p>{%- endif -%}
+      <div class="hero__cta">
+        {%- if section.settings.button_label != blank -%}
+          <a class="btn btn-green" href="{{ section.settings.button_link | default: routes.all_products_collection_url }}">{{ section.settings.button_label }}</a>
+        {%- endif -%}
+        {%- if section.settings.rating_text != blank -%}
+          <span style="font-size:14px;color:#5A6072;font-weight:600;"><span class="stars">★★★★★</span> {{ section.settings.rating_text }}</span>
+        {%- endif -%}
+      </div>
+    </div>
+  </div>
+</div>
+{% schema %}
+{
+  "name": "Hero",
+  "settings": [
+    { "type": "image_picker", "id": "image", "label": "Background image" },
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "India's #1 store · 3 years running" },
+    { "type": "richtext", "id": "heading", "label": "Heading", "default": "<p>Loved by 10,000+ Indians. <em>For good reason.</em></p>" },
+    { "type": "text", "id": "text", "label": "Text", "default": "Thoughtfully curated gadgets and home finds that make everyday life more stylish, simple and comfortable — delivered free across India." },
+    { "type": "text", "id": "button_label", "label": "Button label", "default": "Shop the collection" },
+    { "type": "url", "id": "button_link", "label": "Button link" },
+    { "type": "text", "id": "rating_text", "label": "Rating text", "default": "4.8 average · 3,400+ reviews" }
+  ],
+  "presets": [{ "name": "Hero" }]
+}
+{% endschema %}

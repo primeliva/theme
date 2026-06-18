@@ -1,0 +1,44 @@
+<div class="testi">
+  <div class="sec">
+    <div class="sec__head">
+      {%- if section.settings.eyebrow != blank -%}<span class="eyebrow">{{ section.settings.eyebrow }}</span>{%- endif -%}
+      <h2 class="h2">{{ section.settings.heading | default: 'Why India keeps coming back' }}</h2>
+    </div>
+    <div class="grid-3">
+      {%- for block in section.blocks -%}
+        <div class="testi__card" {{ block.shopify_attributes }}>
+          <div class="stars" style="font-size:16px;letter-spacing:2px;margin-bottom:12px;">★★★★★</div>
+          <p>{{ block.settings.quote }}</p>
+          <div class="who">{{ block.settings.author }}</div>
+        </div>
+      {%- endfor -%}
+    </div>
+  </div>
+</div>
+{% schema %}
+{
+  "name": "Testimonials",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Real customers" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Why India keeps coming back" }
+  ],
+  "blocks": [
+    {
+      "type": "quote",
+      "name": "Testimonial",
+      "settings": [
+        { "type": "textarea", "id": "quote", "label": "Quote" },
+        { "type": "text", "id": "author", "label": "Author" }
+      ]
+    }
+  ],
+  "default": {
+    "blocks": [
+      { "type": "quote", "settings": { "quote": "Genuinely useful products and faster delivery than I expected.", "author": "Ananya R. · Mumbai" } },
+      { "type": "quote", "settings": { "quote": "Cash on delivery made it easy to trust. Quality felt premium.", "author": "Rohit S. · Bengaluru" } },
+      { "type": "quote", "settings": { "quote": "Support replied within minutes on WhatsApp. Highly recommend.", "author": "Meera K. · Delhi" } }
+    ]
+  },
+  "presets": [{ "name": "Testimonials" }]
+}
+{% endschema %}

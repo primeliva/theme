@@ -1,0 +1,41 @@
+{%- assign product = all_products[section.settings.product] -%}
+<div class="sec" style="padding-top:0;">
+  <div class="feature-banner">
+    <div class="feature-banner__text">
+      {%- if section.settings.eyebrow != blank -%}<span class="eyebrow" style="color:#7FD4B6;">{{ section.settings.eyebrow }}</span>{%- endif -%}
+      <h2>{{ section.settings.heading | default: product.title | default: 'Our bestseller' }}</h2>
+      <p>{{ section.settings.text | default: product.description | strip_html | truncatewords: 32 | default: 'A customer favourite — thoughtfully designed, premium quality, and loved across India.' }}</p>
+      {%- if product != blank -%}
+        <div class="pdp__price" style="margin-bottom:26px;">
+          <span class="now" style="color:#fff;">{{ product.price | money }}</span>
+          {%- if product.compare_at_price > product.price -%}<span class="was" style="color:#7FA697;">{{ product.compare_at_price | money }}</span>{%- endif -%}
+        </div>
+        <a class="btn" style="background:#fff;color:var(--green-dark);align-self:flex-start;" href="{{ product.url }}">Shop {{ product.title }}</a>
+      {%- else -%}
+        <a class="btn" style="background:#fff;color:var(--green-dark);align-self:flex-start;" href="{{ routes.all_products_collection_url }}">Shop the collection</a>
+      {%- endif -%}
+    </div>
+    <div class="feature-banner__media">
+      {%- if section.settings.image -%}
+        <img src="{{ section.settings.image | image_url: width: 1200 }}" alt="">
+      {%- elsif product.featured_media -%}
+        <img src="{{ product.featured_media | image_url: width: 1200 }}" alt="{{ product.title | escape }}">
+      {%- else -%}
+        {{ 'lifestyle-1' | placeholder_svg_tag: 'placeholder' }}
+      {%- endif -%}
+    </div>
+  </div>
+</div>
+{% schema %}
+{
+  "name": "Featured product",
+  "settings": [
+    { "type": "product", "id": "product", "label": "Product" },
+    { "type": "image_picker", "id": "image", "label": "Image override" },
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Editor's pick" },
+    { "type": "text", "id": "heading", "label": "Heading override" },
+    { "type": "textarea", "id": "text", "label": "Text override" }
+  ],
+  "presets": [{ "name": "Featured product" }]
+}
+{% endschema %}

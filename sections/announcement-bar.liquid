@@ -1,0 +1,20 @@
+{%- liquid
+  assign t = section.settings
+-%}
+<div class="announce">
+  <div class="announce__row">
+    {%- if t.msg1 != blank -%}<span>{{ t.msg1 }}</span>{%- endif -%}
+    {%- if t.msg2 != blank -%}<span class="announce__dot"></span><span>{{ t.msg2 }}</span>{%- endif -%}
+    {%- if t.msg3 != blank -%}<span class="announce__dot"></span><span>{{ t.msg3 }}</span>{%- endif -%}
+  </div>
+</div>
+{% schema %}
+{
+  "name": "Announcement bar",
+  "settings": [
+    { "type": "text", "id": "msg1", "label": "Message 1", "default": "Free Shipping Pan-India" },
+    { "type": "text", "id": "msg2", "label": "Message 2", "default": "Cash on Delivery Available" },
+    { "type": "text", "id": "msg3", "label": "Message 3", "default": "Loved by 10,000+ Indians" }
+  ]
+}
+{% endschema %}

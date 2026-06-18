@@ -1,0 +1,5 @@
+<div class="sec" style="text-align:center;">
+  <h1 class="serif" style="font-weight:600;font-size:40px;letter-spacing:-.02em;margin:0 0 16px;">Your gift card</h1>
+  <div class="serif" style="font-size:48px;font-weight:600;color:var(--green);">{{ gift_card.balance | money }}</div>
+  <p style="color:#5A6072;margin-top:8px;">Gift card code: <strong>{{ gift_card.code | format_code }}</strong></p>
+</div>

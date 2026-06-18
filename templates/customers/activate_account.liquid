@@ -1,0 +1,10 @@
+<div class="sec" style="max-width:480px;">
+  <h1 class="serif" style="font-weight:600;font-size:38px;letter-spacing:-.02em;margin:0 0 20px;">Activate account</h1>
+  {% form 'activate_customer_password' %}
+    {{ form.errors | default_errors }}
+    <input class="field" type="password" name="customer[password]" placeholder="Password" required>
+    <input class="field" type="password" name="customer[password_confirmation]" placeholder="Confirm password" required>
+    <button type="submit" class="btn btn-green btn-block">Activate</button>
+    <button type="submit" name="decline" class="btn btn-outline btn-block" style="margin-top:10px;">Decline invitation</button>
+  {% endform %}
+</div>

@@ -1,0 +1,40 @@
+<div class="sec" style="padding-bottom:16px;">
+  <span style="font-size:13px;color:#8A8578;font-weight:600;"><a href="{{ routes.root_url }}">Home</a> / <span style="color:#19213B;">{{ collection.title | default: 'Shop all' }}</span></span>
+  <h1 class="serif" style="font-weight:600;font-size:46px;letter-spacing:-.02em;margin:14px 0 6px;">{{ collection.title | default: 'All products' }}</h1>
+  <p style="font-size:16px;color:#5A6072;margin:0;">{{ collection.description | default: 'Every PrimeLiva find, in one place.' }}</p>
+</div>
+<div class="coll">
+  <aside class="coll__aside">
+    <h3>Category</h3>
+    <div class="coll__filter">
+      <a href="{{ routes.all_products_collection_url }}" {% if collection.handle == blank %}class="active"{% endif %}>All</a>
+      {%- for coll in collections -%}
+        {%- if coll.products_count > 0 and coll.handle != 'frontpage' -%}
+          <a href="{{ coll.url }}" {% if collection.handle == coll.handle %}class="active"{% endif %}>{{ coll.title }}</a>
+        {%- endif -%}
+      {%- endfor -%}
+    </div>
+    <h3>Sort by</h3>
+    <div class="coll__filter">
+      <a href="?sort_by=manual">Featured</a>
+      <a href="?sort_by=price-ascending">Price: Low to High</a>
+      <a href="?sort_by=price-descending">Price: High to Low</a>
+    </div>
+  </aside>
+  <div class="coll__main">
+    <div style="font-size:14px;color:#8A8578;font-weight:600;margin-bottom:18px;">{{ collection.products_count }} products</div>
+    {%- paginate collection.products by 12 -%}
+    <div class="grid-3">
+      {%- for product in collection.products -%}
+        {% render 'product-card', product: product %}
+      {%- else -%}
+        <p>No products found.</p>
+      {%- endfor -%}
+    </div>
+    {{ paginate | default_pagination }}
+    {%- endpaginate -%}
+  </div>
+</div>
+{% schema %}
+{ "name": "Collection", "settings": [] }
+{% endschema %}

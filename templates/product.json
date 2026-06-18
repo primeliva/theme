@@ -1,0 +1,18 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-product",
+      "blocks": {
+        "features": { "type": "feature_strip" },
+        "stats": { "type": "stats" },
+        "steps": { "type": "steps" },
+        "included": { "type": "included" },
+        "reviews": { "type": "reviews" },
+        "faq": { "type": "faq" },
+        "guarantee": { "type": "guarantee" }
+      },
+      "block_order": ["features", "stats", "steps", "included", "reviews", "faq", "guarantee"]
+    }
+  },
+  "order": ["main"]
+}
